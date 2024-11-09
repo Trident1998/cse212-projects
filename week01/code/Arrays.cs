@@ -8,12 +8,15 @@ public static class Arrays
     /// <returns>array of doubles that are the multiples of the supplied number</returns>
     public static double[] MultiplesOf(double number, int length)
     {
-        // TODO Problem 1 Start
-        // Remember: Using comments in your program, write down your process for solving this problem
-        // step by step before you write the code. The plan should be clear enough that it could
-        // be implemented by another person.
+        // First, we need to create a result array with a predefined capacity. 
+        // The capacity is given in the arguments. Then, we create a for loop 
+        // to set the number at each cell of the array by multiplying each 
+        // index (i + 1) by the given number.
+        double[] result = new double[length];
+        for(int i = 0; i < length; i++) 
+        result[i] = (i + 1) * number;
 
-        return []; // replace this return statement with your own
+        return result;
     }
 
     /// <summary>
@@ -25,9 +28,23 @@ public static class Arrays
     /// </summary>
     public static void RotateListRight(List<int> data, int amount)
     {
-        // TODO Problem 2 Start
-        // Remember: Using comments in your program, write down your process for solving this problem
-        // step by step before you write the code. The plan should be clear enough that it could
-        // be implemented by another person.
+        // Initialize two empty lists to hold the split parts of the data list. Then, create a for loop 
+        // to get the last 'amount' elements from the original list and add them to the 'firstPart' list. 
+        // Additionally, create a for loop to get the remaining elements from the front of the list 
+        // and add them to the 'secondPart' list. 
+        // Afterward, clear the original list to prepare for the rearranged data, and then add the 
+        // 'firstPart' and 'secondPart' lists successively to the cleared list.
+        List<int> firstPart = new List<int>();  
+        List<int> secondPart = new List<int>(); 
+
+        for (int i = data.Count() - amount; i < data.Count(); i++) 
+        firstPart.Add(data[i]); 
+        
+        for (int i = 0; i < data.Count() - amount; i++)  
+        secondPart.Add(data[i]); 
+
+        data.Clear();
+        data.AddRange(firstPart);
+        data.AddRange(secondPart);
     }
 }
